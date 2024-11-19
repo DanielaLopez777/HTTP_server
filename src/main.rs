@@ -8,28 +8,49 @@ use std::{
     time::Duration,
 };
 
-fn main() {
-    //bind -> connect to a port to listen
-    //Unwrap stops the program if errors happen
-    //Returns a new instance of TcpListener
-    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
-    
-    //Create 4 threads in a ThreadPool
-    let pool = ThreadPool::new(4);
+struct WebServer {
+    address: String,      // The address to bind the server to (e.g., "127.0.0.1:8080")
+    directory: String,    // The directory to serve files from
+}
 
-    //A stream is an open connection between a client and a server
-    //Incoming method returns an iterator with a sequence of streams
-    //Process each connection attempt  and produce streams to handle
-    for stream in listener.incoming().take(2) //Only accepts two request before shutting down
+impl WebServer
+{
+    //Creates a new instance of Web Server
+    pub fn new(address: String, directory: String) -> Self
     {
-        let stream = stream.unwrap(); 
-
-        pool.execute(|| {
-            handle_connection(stream);
-        });
+        WebServer{address, directory,}
     }
 
-    println!("Shutting down.");
+    pub fn run(&self)
+    {
+        //bind -> connect to a port to listen
+        //Unwrap stops the program if errors happen
+        //Returns a new instance of TcpListener
+        let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+        
+        //Create 4 threads in a ThreadPool
+        let pool = ThreadPool::new(4);
+
+        //A stream is an open connection between a client and a server
+        //Incoming method returns an iterator with a sequence of streams
+        //Process each connection attempt  and produce streams to handle
+        for stream in listener.incoming().take(2) //Only accepts two request before shutting down
+        {
+            let stream = stream.unwrap(); 
+
+            pool.execute(|| {
+                handle_connection(stream);
+            });
+        }
+
+        println!("Shutting down.");
+    }
+}
+
+fn main() {
+    let server = WebServer::new("127.0.0.1:8080".to_string(), "./static".to_string());
+    println!("Server initialized at {} serving files from {}", server.address, server.directory);
+    server.run();
 }
 
 fn handle_connection(mut stream: TcpStream) {
