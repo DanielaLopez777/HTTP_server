@@ -1,0 +1,9 @@
+{
+    "name": "Static Server Example",
+    "version": "1.0.0",
+    "features": [
+        "Serve static files",
+        "Support for HTML, CSS, JS, and more",
+        "Multi-threaded handling"
+    ]
+}

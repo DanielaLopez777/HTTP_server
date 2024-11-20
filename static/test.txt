@@ -1,0 +1,2 @@
+This is an example text file.
+It could help to test reading plain text with the static web server.
