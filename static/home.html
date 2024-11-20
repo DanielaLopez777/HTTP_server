@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <title>Hello!</title>
-  </head>
-  <body>
-    <h1>Hello!</h1>
-    <p>Hi from Rust</p>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Rust Server</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb); /* Fondo degradado suave */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        header {
+            background-color: #4f46e5; /* Azul vibrante */
+            color: #fff;
+            width: 100%;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        main {
+            margin-top: 100px; /* Para compensar el header fijo */
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background: #4f46e5;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        a:hover {
+            background: #6366f1; /* Efecto hover más claro */
+        }
+        footer {
+            margin-top: auto;
+            padding: 10px 0;
+            background-color: #1f2937; /* Fondo oscuro */
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Rust Static File Server</h1>
+    </header>
+    <main>
+        <h2>Welcome!</h2>
+        <p>This is the home page the Rust-powered static file server.</p>
+        <a href="/about.html">Learn More</a>
+    </main>
+    <footer>
+        &copy; 2024 - Built with Rust 🦀
+    </footer>
+</body>
 </html>
