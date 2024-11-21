@@ -8,12 +8,12 @@ use std::{
 };
 use mime_guess::from_path; //From an url returns the mime type
 
-struct WebServer {
+pub struct WebServer {
     address: String,      // The address to bind the server to (e.g., "127.0.0.1:8080")
     directory: String,    // The directory to serve files from
 }
 
-impl WebServer
+ impl WebServer
 {
     //Creates a new instance of Web Server
     pub fn new(address: String, directory: String) -> Self
